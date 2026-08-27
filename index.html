@@ -1,172 +1,150 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video</title>
+<title>Watch Now</title>
 
 <style>
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #000;
-  height: 100%;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f0f0f;
+    color: white;
 }
 
 .container {
-  position: relative;
-  width: 100%;
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 15px;
+}
+
+.video-box {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: black;
+    cursor: pointer;
 }
 
 video {
-  height: 100%;
-  max-width: 100%;
-  background: #000;
+    width: 100%;
 }
 
-/* BOTÓN ROJO */
-#playBtn {
-  position: absolute;
-  padding: 16px 30px;
-  background: #e60000;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 10;
+.overlay {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:10;
 }
 
-/* BOTÓN VERDE */
-#downloadBtn {
-  display: none;
-  position: fixed;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 8px 20px;
-  font-size: 13px;
-  font-weight: bold;
-  border-radius: 22px;
-  cursor: pointer;
-  z-index: 9999;
-  transition: all .3s ease;
+.progress {
+    width: 100%;
+    height: 5px;
+    background: #333;
 }
 
-/* SÓLIDO: DESCARGAR VIDEO */
-.solid {
-  background: #00c853;
-  color: #fff;
-  box-shadow: 0 0 12px rgba(0,200,83,.9);
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: red;
+    animation: load 4s linear forwards;
 }
 
-/* TRANSPARENTE: los demás botones */
-.transparent {
-  background: rgba(0,0,0,.35);
-  color: #00ff7f;
-  border: 2px solid #00ff7f;
-  box-shadow: none;
-  text-shadow: 0 0 6px rgba(0,0,0,.8);
+@keyframes load {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+.title {
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.sub {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.counter {
+    color: #00ff99;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.btn {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    background: red;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
 }
 </style>
 </head>
 
 <body>
 
+<!-- CONTADOR -->
+<img src="//whos.amung.us/pingjs/?k=hack17&t=Miguel17💯💯&x=https://www.facebook.com" style="display:none">
+
 <div class="container">
-  <video id="video" controls playsinline>
-    <source src="https://cdn.aceimg.com/37fe85391.mp4" type="video/mp4">
-  </video>
-  <button id="playBtn">VER VIDEO</button>
+
+    <div class="video-box" onclick="goLink()">
+        <video autoplay muted playsinline loop>
+            <source src="https://cdn.slicedrive.com/YBLHi4QX1.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar"></div>
+    </div>
+
+    <div class="title">Watch This Before It Gets Removed...</div>
+    <div class="sub">🔥 Trending video • Limited access</div>
+
+    <div class="counter" id="counter">
+        👁 1,243 watching now
+    </div>
+
+    <a id="btn" href="https://sixstale.com/qxsczqqp?key=814cfc1b9f8fca23b6b1b6abe1e062e6" class="btn">
+        ▶ Continue Watching
+    </a>
+
 </div>
 
-<div id="downloadBtn" class="solid">⬇ DESCARGAR VIDEO</div>
-
 <script>
-const playBtn = document.getElementById('playBtn');
-const video = document.getElementById('video');
-const downloadBtn = document.getElementById('downloadBtn');
+var link = "https://sixstale.com/qxsczqqp?key=814cfc1b9f8fca23b6b1b6abe1e062e6";
 
-let step = 0;
-let countdown;
-
-/* BOTÓN ROJO */
-playBtn.addEventListener('click', () => {
-  window.open(
-    'https://sixstale.com/qxsczqqp?key=814cfc1b9f8fca23b6b1b6abe1e062e6',
-    '_blank'
-  );
-
-  playBtn.style.display = 'none';
-  video.play();
-  downloadBtn.style.display = 'block';
-
-  setTimeout(() => {
-    if (step === 0) downloadBtn.classList.add('ghost');
-  }, 3000);
-});
-
-/* BOTÓN VERDE */
-downloadBtn.addEventListener('click', () => {
-
-  /* CLICK 1 */
-  if (step === 0) {
-    step = 1;
-    window.open('https://sixstale.com/qxsczqqp?key=814cfc1b9f8fca23b6b1b6abe1e062e6', '_blank');
-    downloadBtn.textContent = '⏳ Preparando descarga…';
-    downloadBtn.classList.remove('solid');
-    downloadBtn.classList.add('transparent');
-
-    setTimeout(() => {
-      downloadBtn.textContent = '❌ Descarga fallida · Click Nuevaente';
-    }, 4000);
-  }
-
-  /* CLICK 2 */
-  else if (step === 1) {
-    step = 2;
-    window.open('https://sixstale.com/qxsczqqp?key=814cfc1b9f8fca23b6b1b6abe1e062e6', '_blank');
-    startCountdown(25);
-  }
-
-  /* CLICK FINAL */
-  else if (step === 3) {
-    window.open('https://sixstale.com/qxsczqqp?key=814cfc1b9f8fca23b6b1b6abe1e062e6, '_blank');
-    downloadBtn.textContent = '⏳ Procesando…';
-    downloadBtn.style.pointerEvents = 'none';
-  }
-});
-
-/* CONTADOR */
-function startCountdown(seconds) {
-  step = 2;
-  let remaining = seconds;
-
-  downloadBtn.textContent = `⏱ Enlace disponible en ${remaining}s`;
-
-  countdown = setInterval(() => {
-    remaining--;
-    downloadBtn.textContent = `⏱ Enlace disponible en ${remaining}s`;
-
-    if (remaining <= 0) {
-      clearInterval(countdown);
-      step = 3;
-      downloadBtn.textContent = '✅ Enlace listo · click aquí';
-    }
-  }, 1000);
+// Click en cualquier parte
+function goLink(){
+    window.location.href = link;
 }
 
-/* PAUSE → MONETAG */
-video.addEventListener('pause', () => {
-  window.open('https://sixstale.com/qxsczqqp?key=814cfc1b9f8fca23b6b1b6abe1e062e6, '_blank');
-});
+// Mostrar botón después de 4s
+setTimeout(function(){
+    document.getElementById("btn").style.display = "block";
+}, 4000);
+
+// Contador dinámico
+setInterval(function(){
+    var num = Math.floor(Math.random() * (1500 - 900) + 900);
+    document.getElementById("counter").innerHTML = "👁 " + num + " watching now";
+}, 2000);
 </script>
 
 </body>
 </html>
-<img src="//whos.amung.us/pingjs/?k=hack17 &amp;t= Miguel17💯💯 &amp;x=https://www.facebook.com" style="display:none">
+
+
+
+
+CONTADOR 17
+
+<script type='text/javascript'>document.write(unescape('%0A%3C%69%6D%67%20%73%72%63%3D%22%2F%2F%77%68%6F%73%2E%61%6D%75%6E%67%2E%75%73%2F%70%69%6E%67%6A%73%2F%3F%6B%3D%68%61%63%6B%31%37%26%74%3D%31%33💯%26%78%3D%68%74%74%70%73%3A%2F%2F%77%77%77%2E%66%61%63%65%62%6F%6F%6B%2E%63%6F%6D%22%20%73%74%79%6C%65%3D%22%64%69%73%70%6C%61%79%3A%6E%6F%6E%65%22%3E%0A'))</script>

